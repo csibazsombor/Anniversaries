@@ -54,4 +54,10 @@ body {
 
 /* Swaying animation */
 @keyframes sway {
-    0%, 100% {
+    0%, 100% {0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(30px); /* Move sideways slightly */
+    }
+}
