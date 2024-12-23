@@ -25,5 +25,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    createConfetti();
+    createConfetti(); // Ensure confetti starts after page load
 });
