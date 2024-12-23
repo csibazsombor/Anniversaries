@@ -1,53 +1,38 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;  /* Prevents scrollbars from appearing during confetti animation */
-}
-
-h2 {
-    font-size: 2.5em;
-    color: #FF4081; /* Pinkish color for the text */
-    margin-top: 50px;
-    position: relative;
-    z-index: 10;
-}
-
-/* Love emoji confetti styling */
+/* Confetti container styling */
 #confetti {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: -1;
+    pointer-events: none; /* Ensures confetti doesn't interfere with interactions */
+    overflow: hidden;
+    z-index: 9999;
 }
 
+/* Individual confetti styling */
 .confetti {
     position: absolute;
-    font-size: 1.5em;
-    opacity: 0;
-    animation: fall 3s ease-in infinite, fadeOut 4s ease-out infinite;
+    top: -10%; /* Start slightly above the viewport */
+    animation-name: fall, sway; /* Combine falling and swaying */
+    animation-timing-function: linear, ease-in-out; /* Smooth transitions */
+    animation-iteration-count: 1, infinite; /* Fall once, sway infinitely */
+    animation-fill-mode: forwards; /* Maintain position after falling */
 }
 
+/* Falling animation */
 @keyframes fall {
-    0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
+    to {
+        transform: translateY(110vh); /* Move confetti below the viewport */
     }
 }
 
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
+/* Swaying animation */
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
     }
-    100% {
-        opacity: 0;
+    50% {
+        transform: translateX(30px); /* Move sideways slightly */
     }
 }
