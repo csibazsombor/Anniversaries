@@ -1,23 +1,59 @@
-/* General body styling */
 body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    background: linear-gradient(to right, #e98d90, #ebc4b9);
     font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row; /* Arrange the children side by side */
+    flex-wrap: wrap; /* Allow wrapping if the viewport is narrow */
+    gap: 20px; /* Space between the divs */
+    justify-content: center;
+    align-items: center;
+    width: 80%; /* Constrain container width */
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.text {
+    text-align: center;
+    background-color: rgba(214, 214, 214, 0.247);
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1 1 30%; /* Allow flexible resizing: min width 30%, max width grows */
+    max-width: 300px; /* Ensure divs don’t grow too large */
+    min-width: 200px; /* Prevent divs from shrinking too much */
+    box-sizing: border-box; /* Include padding and border in width/height */
 }
 
 /* Celebration message styling */
 #message {
     position: absolute;
-    top: 20%;
+    top: 10%;
     font-size: 3em;
     font-weight: bold;
     color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    text-align: center;
+}
+
+.date {
+    position: absolute;
+    top: 20%;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: rgb(230, 230, 230);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 10;
     text-align: center;
@@ -33,31 +69,4 @@ body {
     pointer-events: none;
     overflow: hidden;
     z-index: 9999;
-}
-
-/* Individual confetti styling */
-.confetti {
-    position: absolute;
-    top: -10%; /* Start slightly above the viewport */
-    animation-name: fall, sway; /* Combine falling and swaying */
-    animation-timing-function: linear, ease-in-out; /* Smooth transitions */
-    animation-iteration-count: 1, infinite; /* Fall once, sway infinitely */
-    animation-fill-mode: forwards; /* Maintain position after falling */
-}
-
-/* Falling animation */
-@keyframes fall {
-    to {
-        transform: translateY(110vh); /* Move confetti below the viewport */
-    }
-}
-
-/* Swaying animation */
-@keyframes sway {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(30px); /* Move sideways slightly */
-    }
 }
